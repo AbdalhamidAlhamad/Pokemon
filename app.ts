@@ -4,6 +4,7 @@ import connectToDatabase from "./config/db";
 import stageRouter from "./routes/evolutionStage.route";
 import { ErrorMiddleware } from "./middlewares/error";
 import familyRouter from "./routes/family.route";
+import typeRouter from "./routes/type.route";
 
 dotenv.config();
 
@@ -16,6 +17,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/stages", stageRouter);
 
 app.use("/api/families", familyRouter);
+
+app.use("/api/types", typeRouter);
 
 connectToDatabase();
 
