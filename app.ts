@@ -1,9 +1,20 @@
 import express from "express";
 import dotenv from "dotenv";
+import connectToDatabase from "./config/db";
+import stageRouter from "./routes/evolutionStage.route";
+import { ErrorMiddleware } from "./middlewares/error";
 
 dotenv.config();
 
 const app = express();
 
-export default app
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
+app.use("/api/stages", stageRouter);
+
+connectToDatabase();
+
+app.use(ErrorMiddleware);
+
+export default app;
