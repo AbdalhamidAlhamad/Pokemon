@@ -1,7 +1,8 @@
 import expressAsyncHandler from "express-async-handler";
 import { Request, Response, NextFunction } from "express";
-import Type, { validateType } from "../models/type.model";
+import Type from "../models/type.model";
 import ErrorHandler from "../utils/errorHandler";
+import { validateName } from "../utils/validation";
 
 /*****************************************************
  * @desc    Create a new type
@@ -13,7 +14,7 @@ import ErrorHandler from "../utils/errorHandler";
 
 export const createTypeCtrl = expressAsyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
-    const { error } = validateType(req.body);
+    const { error } = validateName(req.body);
     if (error) {
       return next(new ErrorHandler(error.details[0].message, 400));
     }
@@ -84,7 +85,7 @@ export const deleteTypeByIdCtrl = expressAsyncHandler(
 
 export const updateTypeByIdCtrl = expressAsyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
-    const { error } = validateType(req.body);
+    const { error } = validateName(req.body);
     if (error) {
       return next(new ErrorHandler(error.details[0].message, 400));
     }

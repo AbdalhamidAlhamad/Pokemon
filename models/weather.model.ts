@@ -1,8 +1,8 @@
-import Joi from "joi";
 import { sequelize } from "../config/db";
 import { DataTypes } from "sequelize";
+import WeatherModel from "../interfaces/models/weather";
 
-const Weather = sequelize.define("weather", {
+const Weather = sequelize.define<WeatherModel>("weather", {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -11,12 +11,5 @@ const Weather = sequelize.define("weather", {
   },
   name: { type: DataTypes.STRING(50), allowNull: false },
 });
-
-export const validateWeather = (obj: any) => {
-  const schema = Joi.object({
-    name: Joi.string().min(3).max(50).required(),
-  });
-  return schema.validate(obj);
-};
 
 export default Weather;

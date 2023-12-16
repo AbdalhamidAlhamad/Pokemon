@@ -1,8 +1,8 @@
-import Joi from "joi";
 import { sequelize } from "../config/db";
 import { DataTypes } from "sequelize";
+import FamilyModel from "../interfaces/models/family";
 
-const Family = sequelize.define("family", {
+const Family = sequelize.define<FamilyModel>("family", {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -11,13 +11,5 @@ const Family = sequelize.define("family", {
   },
   name: { type: DataTypes.STRING(50), allowNull: false },
 });
-
-
-export const validateFamily = (obj: any) => {
-    const schema = Joi.object({
-        name: Joi.string().min(3).max(50).required(),
-    });
-    return schema.validate(obj);
-};
 
 export default Family;

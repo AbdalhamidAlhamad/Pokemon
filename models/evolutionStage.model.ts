@@ -1,8 +1,8 @@
-import Joi from "joi";
 import { sequelize } from "../config/db";
 import { DataTypes } from "sequelize";
+import EvolutionStageModel from "../interfaces/models/evolutionStage";
 
-const EvolutionStage = sequelize.define("evolutionStage", {
+const EvolutionStage = sequelize.define<EvolutionStageModel>("evolutionStage", {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -11,13 +11,5 @@ const EvolutionStage = sequelize.define("evolutionStage", {
   },
   name: { type: DataTypes.STRING(50), allowNull: false },
 });
-
-
-export const validateStage = (obj: any) => {
-    const schema = Joi.object({
-        name: Joi.string().min(3).max(50).required(),
-    });
-    return schema.validate(obj);
-};
 
 export default EvolutionStage;

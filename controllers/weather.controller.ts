@@ -1,7 +1,8 @@
 import expressAsyncHandler from "express-async-handler";
 import { Request, Response, NextFunction } from "express";
-import Weather, { validateWeather } from "../models/weather.model";
+import Weather from "../models/weather.model";
 import ErrorHandler from "../utils/errorHandler";
+import { validateName } from "../utils/validation";
 
 /*****************************************************
  * @desc    Create a new weather
@@ -13,7 +14,7 @@ import ErrorHandler from "../utils/errorHandler";
 
 export const createWeatherCtrl = expressAsyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
-    const { error } = validateWeather(req.body);
+    const { error } = validateName(req.body);
     if (error) {
       return next(new ErrorHandler(error.details[0].message, 400));
     }
@@ -84,7 +85,7 @@ export const deleteWeatherByIdCtrl = expressAsyncHandler(
 
 export const updateWeatherByIdCtrl = expressAsyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
-    const { error } = validateWeather(req.body);
+    const { error } = validateName(req.body);
     if (error) {
       return next(new ErrorHandler(error.details[0].message, 400));
     }

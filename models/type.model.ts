@@ -1,8 +1,8 @@
-import Joi from "joi";
 import { sequelize } from "../config/db";
 import { DataTypes } from "sequelize";
+import TypeModel from "../interfaces/models/types";
 
-const Type = sequelize.define("type", {
+const Type = sequelize.define<TypeModel>("type", {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -12,11 +12,5 @@ const Type = sequelize.define("type", {
   name: { type: DataTypes.STRING(50), allowNull: false },
 });
 
-export const validateType = (obj: any) => {
-  const schema = Joi.object({
-    name: Joi.string().min(3).max(50).required(),
-  });
-  return schema.validate(obj);
-};
 
 export default Type;

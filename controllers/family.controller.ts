@@ -1,7 +1,8 @@
 import expressAsyncHandler from "express-async-handler";
 import { Request, Response, NextFunction } from "express";
-import Family, { validateFamily } from "../models/family.model";
+import Family from "../models/family.model";
 import ErrorHandler from "../utils/errorHandler";
+import { validateName } from "../utils/validation";
 
 /*****************************************************
  * @desc    Create a new family
@@ -13,7 +14,7 @@ import ErrorHandler from "../utils/errorHandler";
 
 export const createFamilyCtrl = expressAsyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
-    const { error } = validateFamily(req.body);
+    const { error } = validateName(req.body);
     if (error) {
       return next(new ErrorHandler(error.details[0].message, 400));
     }
@@ -84,8 +85,8 @@ export const deleteFamilyByIdCtrl = expressAsyncHandler(
 
 export const updateFamilyByIdCtrl = expressAsyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
-    const { error } = validateFamily(req.body);
-    
+    const { error } = validateName(req.body);
+
     if (error) {
       return next(new ErrorHandler(error.details[0].message, 400));
     }

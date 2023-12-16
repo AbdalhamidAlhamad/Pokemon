@@ -1,7 +1,8 @@
 import expressAsyncHandler from "express-async-handler";
 import { Request, Response, NextFunction } from "express";
-import EvolutionStage, { validateStage } from "../models/evolutionStage.model";
+import EvolutionStage from "../models/evolutionStage.model";
 import ErrorHandler from "../utils/errorHandler";
+import { validateName } from "../utils/validation";
 
 /*****************************************************
  * @desc    Create a new evolution stage
@@ -12,7 +13,7 @@ import ErrorHandler from "../utils/errorHandler";
  */
 export const createEvolutionStageCtrl = expressAsyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
-    const { error } = validateStage(req.body);
+    const { error } = validateName(req.body);
     if (error) {
       return next(new ErrorHandler(error.details[0].message, 400));
     }
@@ -83,7 +84,7 @@ export const deleteEvolutionStageByIdCtrl = expressAsyncHandler(
  */
 export const updateEvolutionStageByIdCtrl = expressAsyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
-    const { error } = validateStage(req.body);
+    const { error } = validateName(req.body);
     if (error) {
       return next(new ErrorHandler(error.details[0].message, 400));
     }
