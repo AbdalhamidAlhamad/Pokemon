@@ -39,8 +39,6 @@ interface PokemonModel
   setWeather: (weather: number[]) => Promise<void>;
 }
 
-export interface PokemonModelStatic extends ModelStatic<PokemonModel> {
-  findAllIncluded: (options?: any) => Promise<PokemonModel[]>;
-}
+
 
 export default PokemonModel;

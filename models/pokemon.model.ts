@@ -4,9 +4,9 @@ import Type from "./type.model";
 import Weather from "./weather.model";
 import Family from "./family.model";
 import EvolutionStage from "./evolutionStage.model";
-import { PokemonModelStatic } from "../interfaces/models/pokemon";
+import PokemonModel from "../interfaces/models/pokemon";
 
-const Pokemon = sequelize.define("pokemon", {
+const Pokemon = sequelize.define<PokemonModel>("pokemon", {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -115,7 +115,7 @@ const Pokemon = sequelize.define("pokemon", {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-}) as PokemonModelStatic;
+});
 
 Pokemon.beforeUpdate((pokemon, options) => {
   if (
@@ -126,35 +126,6 @@ Pokemon.beforeUpdate((pokemon, options) => {
     pokemon.statTotal = pokemon.atk + pokemon.def + pokemon.sta;
   }
 });
-
-Pokemon.findAllIncluded = async function (options = {}) {
-  return await Pokemon.findAll({
-    ...options,
-    include: [
-      {
-        model: Type,
-        attributes: ["id", "name"],
-        through: { attributes: [] },
-      },
-      {
-        model: Weather,
-        attributes: ["id", "name"],
-        through: { attributes: [] },
-      },
-      {
-        model: Family,
-        attributes: ["id", "name"],
-      },
-      {
-        model: EvolutionStage,
-        attributes: ["id", "name"],
-      },
-    ],
-    attributes: {
-      exclude: ["familyId", "evolutionStageId"],
-    },
-  });
-};
 
 Pokemon.belongsToMany(Type, { through: "PokemonType" });
 Pokemon.belongsToMany(Weather, { through: "PokemonWeather" });

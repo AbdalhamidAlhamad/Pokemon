@@ -7,6 +7,7 @@ import Weather from "../models/weather.model";
 import Family from "../models/family.model";
 import EvolutionStage from "../models/evolutionStage.model";
 import { validatePokemon } from "../utils/validation";
+import { getIncluded } from "../utils/pokemon";
 
 /*****************************************************
  * @desc    Create a new pokemon
@@ -49,28 +50,16 @@ export const getPokemonsCtrl = expressAsyncHandler(
     const limit = 10;
     const pageNumber = Number(page) || 1;
     const offset = (pageNumber - 1) * limit;
-    let where = {};
-    if (familyId) {
-      where = { ...where, familyId };
-    }
-    if (evolutionStageId) {
-      where = { ...where, evolutionStageId };
-    }
-    if (typeId) {
-      where = { ...where, typeId };
-    }
-    if (weatherId) {
-      where = { ...where, weatherId };
-    }
-    const pokemons = await Pokemon.findAllIncluded({
-      where,
+    const include = getIncluded(req.query);
+    const pokemons = await Pokemon.findAndCountAll({
       limit,
       offset,
+      include,
+      distinct: true,
     });
 
-    const totalPokemons = await Pokemon.count({ where });
-    const totalPages = Math.ceil(totalPokemons / limit);
-    res.status(200).json({ pokemons, totalPages });
+    const totalPages = Math.ceil(pokemons.count / limit);
+    res.status(200).json({ pokemons: pokemons.rows, totalPages });
   }
 );
 
@@ -84,11 +73,10 @@ export const getPokemonsCtrl = expressAsyncHandler(
 
 export const getPokemonByIdCtrl = expressAsyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
-    const pokemons = await Pokemon.findAllIncluded({
-      where: { id: req.params.id },
+    const include = getIncluded({});
+    const pokemon = await Pokemon.findByPk(req.params.id, {
+      include,
     });
-
-    const pokemon = pokemons[0];
 
     if (!pokemon) {
       return next(new ErrorHandler("Pokemon not found", 404));
