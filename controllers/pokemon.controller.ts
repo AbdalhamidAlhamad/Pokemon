@@ -2,10 +2,6 @@ import expressAsyncHandler from "express-async-handler";
 import { Request, Response, NextFunction } from "express";
 import Pokemon from "../models/pokemon.model";
 import ErrorHandler from "../utils/errorHandler";
-import Type from "../models/type.model";
-import Weather from "../models/weather.model";
-import Family from "../models/family.model";
-import EvolutionStage from "../models/evolutionStage.model";
 import { validatePokemon } from "../utils/validation";
 import { getIncluded } from "../utils/pokemon";
 
@@ -77,7 +73,6 @@ export const getPokemonByIdCtrl = expressAsyncHandler(
     const pokemon = await Pokemon.findByPk(req.params.id, {
       include,
     });
-
     if (!pokemon) {
       return next(new ErrorHandler("Pokemon not found", 404));
     }

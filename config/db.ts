@@ -1,7 +1,8 @@
 import { Sequelize } from "sequelize";
 import { config } from "dotenv";
 
-config();
+config({ path: process.env.ENVIRONMENT === "test" ? ".env.test" : ".env" });
+
 
 export const sequelize = new Sequelize({
   dialect: "mysql",
@@ -9,13 +10,13 @@ export const sequelize = new Sequelize({
   database: process.env.DB_NAME,
   username: process.env.DB_USER,
   password: process.env.DB_PASS,
+  logging: false,
+  
 });
 
 const connectToDatabase = async () => {
   try {
     await sequelize.sync();
-
-    console.log("Connection has been established successfully.");
   } catch (error) {
     console.error("Unable to connect to the database: ", error);
   }

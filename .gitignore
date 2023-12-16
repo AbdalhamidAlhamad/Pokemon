@@ -3,3 +3,4 @@ node_modules
 
 # ignore local env
 .env
+.env.test
