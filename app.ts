@@ -11,6 +11,7 @@ import swaggerSpec from "./swagger";
 import xss from "xss-clean";
 import cors from "cors";
 import { rateLimit } from "express-rate-limit";
+import { notFound } from "./middlewares/not-found";
 
 dotenv.config();
 
@@ -47,6 +48,8 @@ app.use("/api/families", familyRouter);
 app.use("/api/types", typeRouter);
 
 app.use("/api/weather", weatherRouter);
+
+app.use(notFound);
 
 app.use(ErrorMiddleware);
 
