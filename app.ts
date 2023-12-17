@@ -8,16 +8,35 @@ import weatherRouter from "./routes/weather.route";
 import pokemonRouter from "./routes/pokemon.route";
 import swaggerUi from "swagger-ui-express";
 import swaggerSpec from "./swagger";
+import xss from "xss-clean";
+import cors from "cors";
+import { rateLimit } from "express-rate-limit";
 
 dotenv.config();
 
 const app = express();
 
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+// cors
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+  })
+);
+
+app.use(xss());
+
+app.use(
+  rateLimit({
+    windowMs: 5 * 60 * 1000,
+    max: 100,
+  })
+);
 
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use("/api/pokemons", pokemonRouter);
 

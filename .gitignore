@@ -1,9 +1,6 @@
 # ignore node libraries
 node_modules
 
-# ignore local env
-.env
-.env.test
 
 # ignore build
 dist
