@@ -15,7 +15,7 @@ const EvolutionStage = sequelize.define<EvolutionStageModel>("evolutionStage", {
 sequelize.addHook("afterBulkSync", async () => {
   try {
     const count = await EvolutionStage.count();
-    if (count === 0 && process.env.ENVIRONMENT !== "test") {
+    if (count === 0 && process.env.NODE_ENV !== "test") {
       await EvolutionStage.bulkCreate(stagesData);
     }
   } catch (error) {

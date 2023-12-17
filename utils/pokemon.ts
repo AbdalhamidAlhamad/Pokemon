@@ -19,24 +19,24 @@ export const getIncluded = ({
     {
       model: Family,
       attributes: ["id", "name"],
-    //   where: familyId ? { id: familyId } : {},
+      where: familyId ? { id: familyId } : {},
     },
     {
       model: EvolutionStage,
       attributes: ["id", "name"],
-    //   where: evolutionStageId ? { id: evolutionStageId } : {},
+      where: evolutionStageId ? { id: evolutionStageId } : {},
     },
     {
       model: Type,
       attributes: ["id", "name"],
       through: { attributes: [] },
-    //   where: typeId ? { id: typeId } : {},
+      where: typeId ? { id: typeId } : {},
     },
     {
       model: Weather,
       attributes: ["id", "name"],
       through: { attributes: [] },
-    //   where: weatherId ? { id: weatherId } : {},
+      where: weatherId ? { id: weatherId } : {},
     },
   ];
 

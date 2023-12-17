@@ -15,7 +15,7 @@ const Weather = sequelize.define<WeatherModel>("weather", {
 sequelize.addHook('afterBulkSync', async () => {
   try {
     const count = await Weather.count();
-    if (count === 0 && process.env.ENVIRONMENT !== "test") {
+    if (count === 0 && process.env.NODE_ENV !== "test") {
       await Weather.bulkCreate(weatherData);
     }
   } catch (error) {

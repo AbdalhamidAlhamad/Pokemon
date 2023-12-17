@@ -139,7 +139,7 @@ Pokemon.beforeUpdate((pokemon, options) => {
 sequelize.addHook("afterBulkSync", async () => {
  try {
   const count = await Pokemon.count();
-  if (count === 0 && process.env.ENVIRONMENT !== "test") {
+  if (count === 0 && process.env.NODE_ENV !== "test") {
     const typeCount = await Type.count();
     const weatherCount = await Weather.count();
     

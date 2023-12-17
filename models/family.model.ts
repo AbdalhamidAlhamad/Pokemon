@@ -15,7 +15,7 @@ const Family = sequelize.define<FamilyModel>("family", {
 sequelize.addHook("afterBulkSync", async () => {
   try {
     const count = await Family.count();
-    if (count === 0 && process.env.ENVIRONMENT !== "test") {
+    if (count === 0 && process.env.NODE_ENV !== "test") {
       await Family.bulkCreate(familiesData);
     }
   } catch (error) {
