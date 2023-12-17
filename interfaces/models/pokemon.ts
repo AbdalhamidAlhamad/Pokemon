@@ -3,7 +3,6 @@ import {
   InferAttributes,
   InferCreationAttributes,
   Model,
-  ModelStatic,
 } from "sequelize";
 
 interface PokemonModel
