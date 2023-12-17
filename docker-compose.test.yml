@@ -10,7 +10,7 @@ services:
       - NODE_ENV=test
       - DB_HOST=db_test
       - DB_USER=root
-      - DB_PASS=my-secret-pw
+      - DB_PASS=vupX{1UN(:j98$,CY=EV9BD=kqQ1
       - DB_NAME=pokemon_test_db
       - PORT=8080
     depends_on:
@@ -23,10 +23,10 @@ services:
     ports:
       - "9999:3306"
     environment:
-      - MYSQL_ROOT_PASSWORD=my-secret-pw
+      - MYSQL_ROOT_PASSWORD=vupX{1UN(:j98$,CY=EV9BD=kqQ1
       - MYSQL_DATABASE=pokemon_test_db
     healthcheck:
-      test: ["CMD", "mysqladmin", "-uroot", "-pmy-secret-pw", "ping"]
+      test: ["CMD", "mysqladmin", "-uroot", "-pvupX{1UN(:j98$,CY=EV9BD=kqQ1", "ping"]
       interval: 30s
       timeout: 10s
       retries: 5
