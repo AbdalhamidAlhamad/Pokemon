@@ -5,8 +5,11 @@ This Pokémon project is a backend application built with Node.js and Sequelize,
 
 ## Features
 1.CRUD operations for Pokémon data.
+
 2.Association of Pokémon with types, weather families and stages conditions.
+
 3.Filtering options for fetching specific Pokémon data.
+
 4.Comprehensive unit tests to ensure functionality and reliability.
 
 ## Getting Started with Docker
@@ -14,8 +17,11 @@ Ensure you have Docker and Docker Compose installed on your machine.
 Then follow these steps to get the application up and running:
 
 ### 1. Clone the Repository
+```sh
 git clone https://github.com/AbdalhamidAlhamad/Pokemon.git
+
 cd Pokemon
+```
 
 ### 2. Start the Application Using Docker Compose
 
@@ -33,9 +39,13 @@ Once the Docker containers are up and running, the application will be accessibl
 The application exposes various endpoints, such as:
 
 1./api/pokemons - Manage Pokémon data.
+
 2./api/types - Manage Pokémon types.
+
 3./api/weather - Manage with Pokémon weather.
+
 4./api/families - Manage Pokémon families.
+
 5./api/stages - Manage evolution stages.
 
 For detailed information about the API endpoints and usage, refer to the Swagger documentation available at 
