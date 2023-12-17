@@ -2,7 +2,11 @@ import expressAsyncHandler from "express-async-handler";
 import { Request, Response, NextFunction } from "express";
 import Pokemon from "../models/pokemon.model";
 import ErrorHandler from "../utils/errorHandler";
-import { validatePokemon } from "../utils/validation";
+import {
+  validatePokemon,
+  validateTypes,
+  validateWeathers,
+} from "../utils/validation";
 import { getIncluded } from "../utils/pokemon";
 
 /*****************************************************
@@ -20,6 +24,18 @@ export const createPokemonCtrl = expressAsyncHandler(
       return next(new ErrorHandler(error.details[0].message, 400));
     }
 
+    const { typeNotFoundError } = await validateTypes(req.body.typeIds);
+    if (typeNotFoundError) {
+      return next(new ErrorHandler(typeNotFoundError, 400));
+    }
+
+    const { weatherNotFoundError } = await validateWeathers(
+      req.body.weatherIds
+    );
+    if (weatherNotFoundError) {
+      return next(new ErrorHandler(weatherNotFoundError, 400));
+    }
+
     const { typeIds, weatherIds, ...pokemonData } = req.body;
 
     const pokemon = await Pokemon.create({
@@ -28,7 +44,11 @@ export const createPokemonCtrl = expressAsyncHandler(
     });
     await pokemon.setTypes(typeIds);
     await pokemon.setWeather(weatherIds);
-    res.status(201).json(pokemon);
+    const include = getIncluded({});
+    const newPokemon = await Pokemon.findByPk(pokemon.id, {
+      include,
+    });
+    res.status(201).json(newPokemon);
   }
 );
 
@@ -123,6 +143,11 @@ export const updatePokemonByIdCtrl = expressAsyncHandler(
     if (weatherIds) {
       await pokemon.setWeather(weatherIds);
     }
-    res.status(200).json(pokemon);
+
+    const include = getIncluded({});
+    const updatedPokemon = await Pokemon.findByPk(req.params.id, {
+      include,
+    });
+    res.status(200).json(updatedPokemon);
   }
 );

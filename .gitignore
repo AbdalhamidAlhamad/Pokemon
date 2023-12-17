@@ -2,7 +2,7 @@
 node_modules
 
 # ignore local env
-.env.bkp
+.env
 .env.test
 
 # ignore build
