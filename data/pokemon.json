@@ -172,7 +172,7 @@
         "evolved": false,
         "crossGen": false,
         "evolutionStageId": 1,
-        "familyId": 1,
+        "familyId": 2,
         "typeIds": [
             2
         ],
@@ -205,7 +205,7 @@
         "evolved": false,
         "crossGen": false,
         "evolutionStageId": 1,
-        "familyId": 1,
+        "familyId": 2,
         "typeIds": [
             3
         ],
@@ -238,7 +238,7 @@
         "evolved": false,
         "crossGen": false,
         "evolutionStageId": 2,
-        "familyId": 1,
+        "familyId": 2,
         "typeIds": [
             3
         ],
@@ -271,7 +271,7 @@
         "evolved": false,
         "crossGen": false,
         "evolutionStageId": 1,
-        "familyId": 1,
+        "familyId": 2,
         "typeIds": [
             3
         ],

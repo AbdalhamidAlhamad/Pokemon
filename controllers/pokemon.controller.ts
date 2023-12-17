@@ -42,7 +42,7 @@ export const createPokemonCtrl = expressAsyncHandler(
 
 export const getPokemonsCtrl = expressAsyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
-    const { page, familyId, evolutionStageId, typeId, weatherId } = req.query;
+    const { page } = req.query;
     const limit = 10;
     const pageNumber = Number(page) || 1;
     const offset = (pageNumber - 1) * limit;

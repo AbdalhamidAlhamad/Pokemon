@@ -8,18 +8,25 @@ services:
       - "8080:8080"
     environment:
       - NODE_ENV=test
-      - DB_HOST=mysql_test
+      - DB_HOST=db_test
       - DB_USER=root
       - DB_PASS=my-secret-pw
-      - DB_NAME=pokemon_test
+      - DB_NAME=pokemon_test_db
       - PORT=8080
     depends_on:
-      - mysql_test
+      db_test:
+        condition: service_healthy
+        
 
-  mysql_test:
+  db_test:
     image: mysql:8.0.0
     ports:
       - "9999:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=my-secret-pw
-      - MYSQL_DATABASE=pokemon_test
+      - MYSQL_DATABASE=pokemon_test_db
+    healthcheck:
+      test: ["CMD", "mysqladmin", "-uroot", "-pmy-secret-pw", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5

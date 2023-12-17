@@ -13,7 +13,8 @@ services:
       - DB_NAME=pokemon_docker
       - PORT=8080
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
 
   mysql:
     image: mysql:8.0.0
@@ -24,6 +25,11 @@ services:
       - MYSQL_DATABASE=pokemon_docker
     volumes:
       - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "-uroot", "-pmy-secret-pw", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
 volumes:
   mysql-data:
