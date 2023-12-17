@@ -1,3 +1,4 @@
+import { sequelize } from "../../config/db";
 import EvolutionStage from "../../models/evolutionStage.model";
 import Family from "../../models/family.model";
 import Pokemon from "../../models/pokemon.model";
@@ -54,12 +55,12 @@ export const pokemonOne = {
 };
 export const setUpDatabase = async () => {
   try {
+    await sequelize.sync({ force: true });
     await Pokemon.destroy({ where: {}, force: true });
     await Family.destroy({ where: {}, force: true });
     await EvolutionStage.destroy({ where: {}, force: true });
     await Type.destroy({ where: {}, force: true });
     await Weather.destroy({ where: {}, force: true });
-
     await Family.create(familyOne);
     await EvolutionStage.create(stageOne);
     await Type.create(typeOne);

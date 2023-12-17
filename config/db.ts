@@ -13,13 +13,3 @@ export const sequelize = new Sequelize({
   logging: false,
   
 });
-
-const connectToDatabase = async () => {
-  try {
-    await sequelize.sync();
-  } catch (error) {
-    console.error("Unable to connect to the database: ", error);
-  }
-};
-
-export default connectToDatabase;
