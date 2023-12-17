@@ -5,7 +5,7 @@ import Weather from "./weather.model";
 import Family from "./family.model";
 import EvolutionStage from "./evolutionStage.model";
 import PokemonModel from "../interfaces/models/pokemon";
-
+import pokemonData from "../data/pokemon.json";
 const Pokemon = sequelize.define<PokemonModel>("pokemon", {
   id: {
     type: DataTypes.INTEGER,
@@ -117,6 +117,15 @@ const Pokemon = sequelize.define<PokemonModel>("pokemon", {
   },
 });
 
+Pokemon.belongsToMany(Type, { through: "PokemonType" });
+Pokemon.belongsToMany(Weather, { through: "PokemonWeather" });
+Pokemon.belongsTo(Family);
+Pokemon.belongsTo(EvolutionStage);
+Family.hasMany(Pokemon);
+Type.belongsToMany(Pokemon, { through: "PokemonType" });
+Weather.belongsToMany(Pokemon, { through: "PokemonWeather" });
+EvolutionStage.hasMany(Pokemon);
+
 Pokemon.beforeUpdate((pokemon, options) => {
   if (
     pokemon.changed("atk") ||
@@ -127,13 +136,25 @@ Pokemon.beforeUpdate((pokemon, options) => {
   }
 });
 
-Pokemon.belongsToMany(Type, { through: "PokemonType" });
-Pokemon.belongsToMany(Weather, { through: "PokemonWeather" });
-Pokemon.belongsTo(Family);
-Pokemon.belongsTo(EvolutionStage);
-Family.hasMany(Pokemon);
-Type.belongsToMany(Pokemon, { through: "PokemonType" });
-Weather.belongsToMany(Pokemon, { through: "PokemonWeather" });
-EvolutionStage.hasMany(Pokemon);
+sequelize.addHook("afterBulkSync", async () => {
+ try {
+  const count = await Pokemon.count();
+  if (count === 0 && process.env.ENVIRONMENT !== "test") {
+    const typeCount = await Type.count();
+    const weatherCount = await Weather.count();
+    
+    if (typeCount !== 0 && weatherCount !== 0) {
+      for (const pokemon of pokemonData) {
+        const createdPokemon = await Pokemon.create(pokemon);
+
+        await createdPokemon.setTypes(pokemon.typeIds);
+        await createdPokemon.setWeather(pokemon.weatherIds);
+      }
+    }
+  }
+ } catch (error) {
+    console.error("Error seeding Pokemon data:", error);
+ }
+});
 
 export default Pokemon;

@@ -1,0 +1,368 @@
+[
+    {
+        "name": "Bulbasaur",
+        "pokedexNumber": 243,
+        "imgName": "pikamon.png",
+        "generation": 7,
+        "evolved": false,
+        "crossGen": false,
+        "evolutionStageId": 1,
+        "familyId": 1,
+        "typeIds": [
+            1
+        ],
+        "weatherIds": [
+            1
+        ],
+        "atk": 149,
+        "def": 108,
+        "sta": 124,
+        "statTotal": 381,
+        "legendeary": true,
+        "aquireable": false,
+        "spawns": 91,
+        "regional": false,
+        "raidable": false,
+        "hatchable": false,
+        "shiny": true,
+        "nest": true,
+        "new": false,
+        "notGettable": false,
+        "futureEvolve": true,
+        "cp40": 1439,
+        "cp39": 1410
+    },
+    {
+        "name": "Ivysaur",
+        "pokedexNumber": 244,
+        "imgName": "pikamon.png",
+        "generation": 7,
+        "evolved": false,
+        "crossGen": false,
+        "evolutionStageId": 2,
+        "familyId": 1,
+        "typeIds": [
+            1
+        ],
+        "weatherIds": [
+            1
+        ],
+        "atk": 223,
+        "def": 173,
+        "sta": 155,
+        "statTotal": 551,
+        "legendeary": true,
+        "aquireable": false,
+        "spawns": 31,
+        "regional": false,
+        "raidable": false,
+        "hatchable": false,
+        "shiny": true,
+        "nest": true,
+        "new": false,
+        "notGettable": false,
+        "futureEvolve": true,
+        "cp40": 2720,
+        "cp39": 2681
+    },
+    {
+        "name": "Venusaur",
+        "pokedexNumber": 245,
+        "imgName": "pikamon.png",
+        "generation": 7,
+        "evolved": false,
+        "crossGen": false,
+        "evolutionStageId": 1,
+        "familyId": 1,
+        "typeIds": [
+            1
+        ],
+        "weatherIds": [
+            1
+        ],
+        "atk": 263,
+        "def": 202,
+        "sta": 190,
+        "statTotal": 655,
+        "legendeary": true,
+        "aquireable": false,
+        "spawns": 4,
+        "regional": false,
+        "raidable": false,
+        "hatchable": false,
+        "shiny": true,
+        "nest": true,
+        "new": false,
+        "notGettable": false,
+        "futureEvolve": false,
+        "cp40": 3823,
+        "cp39": 3768
+    } ,
+    {
+        "name": "Charmander",
+        "pokedexNumber": 246,
+        "imgName": "pikamon.png",
+        "generation": 7,
+        "evolved": false,
+        "crossGen": false,
+        "evolutionStageId": 1,
+        "familyId": 1,
+        "typeIds": [
+            2
+        ],
+        "weatherIds": [
+            1
+        ],
+        "atk": 116,
+        "def": 93,
+        "sta": 118,
+        "statTotal": 327,
+        "legendeary": true,
+        "aquireable": false,
+        "spawns": 125,
+        "regional": false,
+        "raidable": false,
+        "hatchable": false,
+        "shiny": true,
+        "nest": true,
+        "new": false,
+        "notGettable": false,
+        "futureEvolve": true,
+        "cp40": 980,
+        "cp39": 966
+    },
+    {
+        "name": "Charmeleon",
+        "pokedexNumber": 247,
+        "imgName": "pikamon.png",
+        "generation": 7,
+        "evolved": false,
+        "crossGen": false,
+        "evolutionStageId": 2,
+        "familyId": 1,
+        "typeIds": [
+            2
+        ],
+        "weatherIds": [
+            1
+        ],
+        "atk": 158,
+        "def": 126,
+        "sta": 151,
+        "statTotal": 435,
+        "legendeary": true,
+        "aquireable": false,
+        "spawns": 41,
+        "regional": false,
+        "raidable": false,
+        "hatchable": false,
+        "shiny": true,
+        "nest": true,
+        "new": false,
+        "notGettable": false,
+        "futureEvolve": true,
+        "cp40": 1653,
+        "cp39": 1629
+    },
+    {
+        "name": "Charizard",
+        "pokedexNumber": 248,
+        "imgName": "pikamon.png",
+        "generation": 7,
+        "evolved": false,
+        "crossGen": false,
+        "evolutionStageId": 1,
+        "familyId": 1,
+        "typeIds": [
+            2
+        ],
+        "weatherIds": [
+            1
+        ],
+        "atk": 223,
+        "def": 173,
+        "sta": 186,
+        "statTotal": 582,
+        "legendeary": true,
+        "aquireable": false,
+        "spawns": 4,
+        "regional": false,
+        "raidable": false,
+        "hatchable": false,
+        "shiny": true,
+        "nest": true,
+        "new": false,
+        "notGettable": false,
+        "futureEvolve": false,
+        "cp40": 2889,
+        "cp39": 2845
+    },
+    {
+        "name": "Squirtle",
+        "pokedexNumber": 249,
+        "imgName": "pikamon.png",
+        "generation": 7,
+        "evolved": false,
+        "crossGen": false,
+        "evolutionStageId": 1,
+        "familyId": 1,
+        "typeIds": [
+            3
+        ],
+        "weatherIds": [
+            1
+        ],
+        "atk": 94,
+        "def": 121,
+        "sta": 127,
+        "statTotal": 342,
+        "legendeary": true,
+        "aquireable": false,
+        "spawns": 125,
+        "regional": false,
+        "raidable": false,
+        "hatchable": false,
+        "shiny": true,
+        "nest": true,
+        "new": false,
+        "notGettable": false,
+        "futureEvolve": true,
+        "cp40": 946,
+        "cp39": 933
+    },
+    {
+        "name": "Wartortle",
+        "pokedexNumber": 250,
+        "imgName": "pikamon.png",
+        "generation": 7,
+        "evolved": false,
+        "crossGen": false,
+        "evolutionStageId": 2,
+        "familyId": 1,
+        "typeIds": [
+            3
+        ],
+        "weatherIds": [
+            1
+        ],
+        "atk": 126,
+        "def": 155,
+        "sta": 153,
+        "statTotal": 434,
+        "legendeary": true,
+        "aquireable": false,
+        "spawns": 41,
+        "regional": false,
+        "raidable": false,
+        "hatchable": false,
+        "shiny": true,
+        "nest": true,
+        "new": false,
+        "notGettable": false,
+        "futureEvolve": true,
+        "cp40": 1488,
+        "cp39": 1466
+    },
+    {
+        "name": "Blastoise",
+        "pokedexNumber": 251,
+        "imgName": "pikamon.png",
+        "generation": 7,
+        "evolved": false,
+        "crossGen": false,
+        "evolutionStageId": 1,
+        "familyId": 1,
+        "typeIds": [
+            3
+        ],
+        "weatherIds": [
+            1
+        ],
+        "atk": 171,
+        "def": 207,
+        "sta": 188,
+        "statTotal": 566,
+        "legendeary": true,
+        "aquireable": false,
+        "spawns": 4,
+        "regional": false,
+        "raidable": false,
+        "hatchable": false,
+        "shiny": true,
+        "nest": true,
+        "new": false,
+        "notGettable": false,
+        "futureEvolve": false,
+        "cp40": 2466,
+        "cp39": 2430
+    },
+    {
+        "name": "Caterpie",
+        "pokedexNumber": 252,
+        "imgName": "pikamon.png",
+        "generation": 7,
+        "evolved": false,
+        "crossGen": true,
+        "evolutionStageId": 1,
+        "familyId": 1,
+        "typeIds": [
+            4
+        ],
+        "weatherIds": [
+            1
+        ],
+        "atk": 55,
+        "def": 62,
+        "sta": 128,
+        "statTotal": 245,
+        "legendeary": true,
+        "aquireable": false,
+        "spawns": 277,
+        "regional": false,
+        "raidable": false,
+        "hatchable": true,
+        "shiny": true,
+        "nest": true,
+        "new": true,
+        "notGettable": false,
+        "futureEvolve": true,
+        "cp40": 437,
+        "cp39": 431
+    },
+    {
+        "name": "Metapod",
+        "pokedexNumber": 253,
+        "imgName": "pikamon.png",
+        "generation": 7,
+        "evolved": true,
+        "crossGen": true,
+        "evolutionStageId": 2,
+        "familyId": 1,
+        "typeIds": [
+            4
+        ],
+        "weatherIds": [
+            1
+        ],
+        "atk": 45,
+        "def": 94,
+        "sta": 137,
+        "statTotal": 276,
+        "legendeary": true,
+        "aquireable": false,
+        "spawns": 8,
+        "regional": false,
+        "raidable": false,
+        "hatchable": true,
+        "shiny": true,
+        "nest": true,
+        "new": true,
+        "notGettable": false,
+        "futureEvolve": true,
+        "cp40": 450,
+        "cp39": 443
+    }
+
+
+   
+]
