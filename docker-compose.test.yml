@@ -27,6 +27,6 @@ services:
       - MYSQL_DATABASE=pokemon_test_db
     healthcheck:
       test: ["CMD", "mysqladmin", "-uroot", "-pmy-secret-pw", "ping"]
-      interval: 5s
-      timeout: 5s
+      interval: 30s
+      timeout: 10s
       retries: 5
