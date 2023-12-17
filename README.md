@@ -26,8 +26,16 @@ cd Pokemon
 ### 2. Start the Application Using Docker Compose
 
 ```sh
+make docker-run-prod
+```
+
+OR
+
+```sh
 sudo docker compose up
 ```
+
+
 This command will set up the Node.js application and the MySQL database. It will also run any necessary database migrations.
 
 
@@ -54,6 +62,45 @@ http://localhost:8080/api-docs
 ## Running Tests
 To run the test suite in a Docker environment, use the following command:
 
+
+```sh
+make docker-run-test
+```
+
+ OR
+
 ```sh
 sudo docker compose -f docker-compose.test.yml up --abort-on-container-exit
 ```
+
+
+## Other scripts
+
+inside the Makefile there are scripts that can be used
+
+docker-run-prod
+
+docker-run-test
+
+build
+
+test
+
+dev
+
+start
+
+They can be utilized using the "make" keyword
+
+
+## Running the application locally without docker
+
+in order to use the application locally you need to have node installed and also you need to fill the .env and .env.test files
+
+use the command 
+
+```sh
+make start
+```
+
+This will run the application locally.
